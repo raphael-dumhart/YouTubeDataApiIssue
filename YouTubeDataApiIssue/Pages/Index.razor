@@ -1,0 +1,19 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<EditForm Model="@this" OnValidSubmit="Search">
+    <InputText id="name" @bind-Value="SearchTerm" />
+    <button type="submit">Search</button>
+</EditForm>
+
+@if (SearchResults != null)
+{
+    foreach (var result in SearchResults)
+    {
+        <div>
+            <a href="@result.TargetUrl" target="_blank">@result.Title</a>
+            <p>@result.Teaser</p>
+        </div>
+    }
+}
